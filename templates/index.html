@@ -80,8 +80,13 @@
 		
 		
 		//We display a question with 4 answers
-		function AddQuestion(){
-		
+		async function AddQuestion(){
+		    const [answerObject] = await fetch("http://127.0.0.1:5000/newquestion").then((res)=>{
+                return res.json();
+            })
+
+            console.log(JSON.stringify(answerObject, null, 3));
+
 			//Disable Continue and End buttons if there are there
 			continue_button_id="next"+question_number;
 			let continue_button = document.getElementById(continue_button_id);
