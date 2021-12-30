@@ -1,24 +1,13 @@
 Les trucs qui vont pas :
 
--la barre du haut est plus petite sur l'onglet Play que sur l'onglet Rules j'ai l'impression ?
-
 -les boutons History, Cinema, Art... (enfin surtout History car les autres sont déjà désactivés) ne peuvent pas être désactivés avec le getElementByClassName en JavaScript (pour tous les sélectionner d'un coup)
 Dans l'idéal : désactiver en laissant la couleur de History qui est sélectionné 
 
 -tous les boutons en général, une fois qu'on a cliqué dessus, il faudrait qu'ils gardent la couleur qu'ils avaient au moment du click 
 (là je les désactive mais du coup ils reprennent leur couleur d'origine)
 
--il faudrait désactiver les boutons de réponses après avoir répondu
-
 -ce serait cool que la page défile toute seule quand on appuie sur Next et aller direct en bas de la page
-
--règles du jeu à traduire si on fait le quiz en anglais
 
 -toutes les box de réponses doivent avoir la même taille mais ce n'est pas le cas
 
--ajouter les points du joueur
-
--si on clique sur un bouton pas de la bonne question il faut pas que ca fonctionne
-pourquoi user_answer est complété alors qu'on n'est pas dans la bonne question ?
-
--ajouter regex dans css pour que class answers fonctionne
+-ajouter regex dans css pour que class answers fonctionne, CSS FONCTIONNE PLUS

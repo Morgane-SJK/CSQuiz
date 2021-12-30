@@ -49,6 +49,7 @@
 	<script>
 	
 		let question_number=0;
+		let user_score=0;
 		let user_answer="";
 		const feedback_true="The answer is correct !"
 		const feedback_false="The answer is wrong !"
@@ -138,11 +139,13 @@
 				let btns = btns_div.getElementsByClassName("answer-buttons");
 				let feedback="";
 				for (var i = 0; i < btns.length; i++) {
+					//Desactivate button
+					btns[i].disabled=true;
 					if(btns[i].id=="right_answer"){
 						btns[i].style.backgroundColor = 'green';
 						if (btns[i].id==user_answer){
 							feedback=feedback_true;
-							//points+=1	
+							user_score+=1	
 						}
 					}
 					else{
@@ -160,8 +163,9 @@
 									+"<button class='submit' id='end"+question_number+"' style='background-color:red; margin-left:5px;' onclick='End()'>End</button>";
 				div.innerHTML=messagetodisplay;
 				document.getElementById("main").appendChild(div);
+				
+				user_answer="";
 			}
-			user_answer="";
 		}
 		
 		function End(){
@@ -173,7 +177,7 @@
 			
 			//Display a final message with the player's score
 			let div = document.createElement("div");
-			div.innerHTML="<p>Thank you for playing !</p>";
+			div.innerHTML="<p>Thank you for playing ! Your final score is "+user_score+"/"+question_number+".</p>";
 			document.getElementById("main").appendChild(div);
 		}
 		
