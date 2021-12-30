@@ -44,17 +44,6 @@ def new_question():
     return jsonify(generator.new_question())
 
 
-"""
-@app.route('/', methods=['POST'])
-def start():
-    print("Start the quiz")
-    #return render_template("rules.html") #A changer --> on crée une autre page pour les questions ?
-    name="coucou"
-    return name
-"""
-
-'''_______________________________________QUERIES_______________________________________'''
-
 '''_______________________________________MAIN_______________________________________'''
 
 if __name__ == "__main__":
