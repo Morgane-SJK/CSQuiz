@@ -41,6 +41,7 @@
 		<button id="start" class="submit" onclick="start()">START</button>
 		<br><br>
 		
+		
 		</div>
 
 	</body>
@@ -91,10 +92,11 @@
 			const false_answer3 = questionObject[0]["wrong_answers"][2];
 			
 			//Create a list with the buttons and shuffle it in order to display them in a random order (to not have the right answer at the same place all the time)
-			const button1 = "<button class='answer-buttons"+question_number+"' id='right_answer'>"+right_answer+"</button>";
-			const button2 = "<button class='answer-buttons"+question_number+"' id='false_answer1'>"+false_answer1+"</button>";
-			const button3 = "<button class='answer-buttons"+question_number+"' id='false_answer2'>"+false_answer2+"</button>";
-			const button4 = "<button class='answer-buttons"+question_number+"' id='false_answer3'>"+false_answer3+"</button>";
+			const button1 = "<button class='answer-buttons' id='right_answer'>"+right_answer+"</button><br>";
+			const button2 = "<button class='answer-buttons' id='false_answer1'>"+false_answer1+"</button><br>";
+			const button3 = "<button class='answer-buttons' id='false_answer2'>"+false_answer2+"</button><br>";
+			const button4 = "<button class='answer-buttons' id='false_answer3'>"+false_answer3+"</button><br>";
+			
 			let buttons = [button1, button2, button3, button4];
 			shuffleArray(buttons);
 			
@@ -111,15 +113,9 @@
 			document.getElementById("main").appendChild(div);
 			
 			//Add an event listener to the buttons to know which one was clicked
-			//let class_name_buttons = class_name + " answer-buttons";
-			//console.log("HERE = ");
-			//console.log(class_name_buttons);
-			let class_name_buttons = "answer-buttons"+question_number;
-			console.log(class_name_buttons);
-			//btns = document.getElementsByClassName("answer-buttons");
-			//btns = document.getElementsByClassName(class_name_buttons);
-			//btns = document.getElementsByClassName("answer-buttons1");
-			btns = document.getElementsByClassName("answers1 answer-buttons");
+			//only to the buttons of the actual question
+			let btns_div = document.getElementsByClassName(class_name)[0];
+			let btns = btns_div.getElementsByClassName("answer-buttons");
 			for (var i = 0; i < btns.length; i++) {
 				btns[i].addEventListener("click", (e) => {
 					user_answer=e.target.id;
@@ -131,24 +127,32 @@
 		function AnswerQuestion() {
 			//if the user answered a question
 			if (user_answer!=""){
-			
+
 				//Disable previous buttons
 				submit_button="submit"+question_number;
 				document.getElementById(submit_button).disabled=true;
 				
-				//Change button color 
-				let feedback;
-				if (user_answer=="right_answer"){
-					feedback=feedback_true;
-					//points+=1				
+				//Get the answer of the user and change button color
+				let class_name = 'answers'+question_number;
+				let btns_div = document.getElementsByClassName(class_name)[0];
+				let btns = btns_div.getElementsByClassName("answer-buttons");
+				let feedback="";
+				for (var i = 0; i < btns.length; i++) {
+					if(btns[i].id=="right_answer"){
+						btns[i].style.backgroundColor = 'green';
+						if (btns[i].id==user_answer){
+							feedback=feedback_true;
+							//points+=1	
+						}
+					}
+					else{
+						if(btns[i].id==user_answer){
+							btns[i].style.backgroundColor = 'red';
+							feedback=feedback_false;
+						}
+					}
 				}
-				else{
-					feedback=feedback_false;
-					//Display the wrong answer in red
-					document.getElementById(user_answer).style.backgroundColor = 'red';
-				}
-				document.getElementById("right_answer").style.backgroundColor = 'green';
-				
+
 				//Display a feedback and Next/End buttons
 				let div = document.createElement("div");
 				var messagetodisplay="<p>"+feedback
@@ -156,9 +160,8 @@
 									+"<button class='submit' id='end"+question_number+"' style='background-color:red; margin-left:5px;' onclick='End()'>End</button>";
 				div.innerHTML=messagetodisplay;
 				document.getElementById("main").appendChild(div);
-				
-				user_answer="";
 			}
+			user_answer="";
 		}
 		
 		function End(){
