@@ -16,15 +16,9 @@ Dans l'idéal : désactiver en laissant la couleur de History qui est sélection
 
 -toutes les box de réponses doivent avoir la même taille mais ce n'est pas le cas
 
--problèmes de couleurs d'affichage pour les boutons
-
--modifier le event listener pour que ce soit que sur les nouveaux boutons
-
--supprimer les id des anciens bouttons
-à voir avec ça :
-let div = document.createElement("div");
-			div.className = 'answers'+question_number;
-
 -ajouter les points du joueur
 
--retirer le nom du div et ajouter un numéro answer-buttons1 ...
+-si on clique sur un bouton pas de la bonne question il faut pas que ca fonctionne
+pourquoi user_answer est complété alors qu'on n'est pas dans la bonne question ?
+
+-ajouter regex dans css pour que class answers fonctionne
