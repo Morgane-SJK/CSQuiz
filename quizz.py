@@ -9,6 +9,7 @@ Created on Sat Dec 18 12:11:26 2021
 from flask import Flask
 import random
 from flask import render_template, jsonify
+from question_generator.question_generator import QuestionGenerator
 from flask import request
 
 '''_______________________________________APP FLASK_______________________________________'''
@@ -18,6 +19,8 @@ app = Flask(__name__, template_folder="templates")
 app.config["SECRET_KEY"] = "alexandremorgane"
 
 app = Flask(__name__)
+
+generator = QuestionGenerator()
 
 
 # default
@@ -38,11 +41,7 @@ def rules():
 
 @app.route('/newquestion')
 def new_question():
-    random_response = {"question": f"This is random question {random.randint(1, 100)}",
-                       "right_answer": f"right answer",
-                       "wrong_answers": [f"wrong answer {i + 1}" for i in range(3)]},
-
-    return jsonify(random_response)
+    return jsonify(generator.new_question())
 
 
 """
