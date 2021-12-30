@@ -9,9 +9,22 @@ Dans l'idéal : désactiver en laissant la couleur de History qui est sélection
 (là je les désactive mais du coup ils reprennent leur couleur d'origine)
 
 -il faudrait désactiver les boutons de réponses après avoir répondu
-mettre en vert la bonne réponse
-mettre en rouge la réponse sur laquelle on a appuyé si c'était faux
 
 -ce serait cool que la page défile toute seule quand on appuie sur Next et aller direct en bas de la page
 
 -règles du jeu à traduire si on fait le quiz en anglais
+
+-toutes les box de réponses doivent avoir la même taille mais ce n'est pas le cas
+
+-problèmes de couleurs d'affichage pour les boutons
+
+-modifier le event listener pour que ce soit que sur les nouveaux boutons
+
+-supprimer les id des anciens bouttons
+à voir avec ça :
+let div = document.createElement("div");
+			div.className = 'answers'+question_number;
+
+-ajouter les points du joueur
+
+-retirer le nom du div et ajouter un numéro answer-buttons1 ...
