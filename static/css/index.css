@@ -70,13 +70,6 @@ nav a:hover{
 	background-color: #FFCCFF;
 }
 
-
-div.answers1{
-	margin-top : 5px;
-	border : 2px solid black;
-	background-color: #FFCCFF;
-}
-
 /* Boutons de la classe answer-buttons */
 button.answer-buttons{
 	margin-bottom : 10px;
