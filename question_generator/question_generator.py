@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 import random
 import re
-from question_generator.db_queries import get_question_data, get_resource_type
+from question_generator.db_queries import get_question_data
 from question_generator.question_templates import build_question
-from question_generator.films import Films
+from question_generator.classes.films import Films
 
 
 class QuestionGenerator():
