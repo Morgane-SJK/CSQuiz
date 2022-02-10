@@ -15,7 +15,7 @@ def _query(q):
 
 
 def _query_resource(predicate):
-    query_string = f"""    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    query_string = f"""PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     SELECT ?label_subject ?object ?label_object ?label_predicate ?range
     WHERE {{
         ?subject {predicate} ?object .
