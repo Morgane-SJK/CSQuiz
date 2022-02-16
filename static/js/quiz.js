@@ -10,9 +10,13 @@ function start() {
   document.getElementById("start").disabled = true;
 
   // TODO : freezer tous les boutons sur les thèmes mais ça marche pas
-  var subjects_buttons = document.getElementsByClassName("subject-buttons");
-  for (var i = 0; i < subjects_buttons.length; i++) {
-    subjects_buttons[i].disabled = true;
+  for (const elem of document.getElementsByClassName("subject-buttons")){
+    for(const button of elem.getElementsByTagName("button")){
+      button.disabled = true;
+      if(button.innerText == theme){
+        button.className = "selected-button";
+      }
+    }
   }
 
   AddQuestion();

@@ -60,6 +60,14 @@ nav a:hover{
 	border : 3px solid #71687D;
 }
 
+.selected-button {
+	background-color: #9D2349;
+	color : white;
+	padding : 10px 24px;
+	font-size : 18px;
+	cursor : pointer;
+}
+
 .subject-buttons button:disabled {
 	cursor : not-allowed;
 }
