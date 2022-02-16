@@ -1,17 +1,15 @@
-
 body {
   font-weight: normal;
-  background-color: #EEEEEE;  
+  background-color: #eeeeee;
   text-align: center;
 }
 
-h1 {
-  color: #9D2349;
-}
-
+/* h1 {
+  color: #9d2349;
+} */
 
 /* Navigation Bar */
-nav ul{
+/* nav ul{
 	margin:0;
 	padding:0;
 	background-color: #D6D3DB;
@@ -23,124 +21,123 @@ nav a{
 	padding: 10px;
 	
 	text-align: center;
-	text-decoration: none; /* to remove underlying of the links */
+	text-decoration: none; 
 	
 	color: black;
 	
 	font-size : 20px;
 }
 
+
 nav li {
-	margin-top: 10px;
-	font-weight: bold;
+  margin-top: 10px;
+  font-weight: bold;
 }
+*/
 
 /* Change the link color on hover and add the underlying*/
-nav a:hover{
-	color: #9D2349;
-	text-decoration: underline;
-}
+/* nav a:hover {
+  color: #9d2349;
+  text-decoration: underline;
+} */
 
 /* Boutons de la classe subject-buttons */
 .subject-buttons button {
-	background-color: #9D2349;
-	color : white;
-	padding : 10px 24px;
-	font-size : 18px;
-	cursor : pointer;
+  background-color: #9d2349;
+  color: white;
+  padding: 10px 24px;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .subject-buttons button:hover {
-	opacity:0.7;
+  opacity: 0.7;
 }
 
 .subject-buttons button:focus {
-	opacity : 1;
-	background-color: #D4406E;
-	border : 3px solid #71687D;
+  opacity: 1;
+  background-color: #d4406e;
+  border: 3px solid #71687d;
 }
 
-.selected-button {
-	background-color: #9D2349;
-	color : white;
-	padding : 10px 24px;
-	font-size : 18px;
-	cursor : pointer;
+.subject-buttons button:selected {
+  opacity: 1;
+  background-color: #d4406e;
+  border: 3px solid #71687d;
 }
 
 .subject-buttons button:disabled {
-	cursor : not-allowed;
+  cursor: not-allowed;
 }
 
-[class^="answers"]{
-	margin-top : 5px;
-	border : 2px solid black;
-	background-color: #FFCCFF;
+[class^="answers"] {
+  margin-top: 5px;
+  border: 2px solid black;
+  background-color: #ffccff;
 }
 
 /* Boutons de la classe answer-buttons */
-button.answer-buttons{
-	margin-bottom : 10px;
-	margin-right : 10px;
-	background-color: #8FAADC;
-	color : white;
-	padding : 30px;
-	font-size : 18px;
-	cursor : pointer;
-	width : 300px;
+button.answer-buttons {
+  margin-bottom: 10px;
+  margin-right: 10px;
+  background-color: #8faadc;
+  color: white;
+  padding: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 300px;
 }
 
 button.answer-buttons:hover {
-	opacity:0.7;
+  opacity: 0.7;
 }
 
-button.answer-buttons:focus{
-	opacity:0.7;
-	border : 5px solid yellow;
+button.answer-buttons:focus {
+  opacity: 0.7;
+  border: 5px solid yellow;
 }
 
-button.answer-buttons:disabled{
-	cursor : not-allowed;
+button.answer-buttons:disabled {
+  cursor: not-allowed;
 }
-
 
 /* Boutons de la classe submit */
 button.submit {
-	background-color: #71687D;
-	color : white;
-	padding : 10px 24px;
-	font-size : 18px;
-	cursor : pointer;
-	margin-bottom : 5px;
+  background-color: #71687d;
+  color: white;
+  padding: 10px 24px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 5px;
 }
 
 button.submit:hover {
-	background-color: #BBB6C2;
+  background-color: #bbb6c2;
 }
 
 button.submit:focus {
-	background-color: #BBB6C2;
-	border : 2px solid #71687D;
+  background-color: #bbb6c2;
+  border: 2px solid #71687d;
 }
 
 button.submit:active {
-	background-color: #BBB6C2;
-	border : 2px solid #71687D;
+  background-color: #bbb6c2;
+  border: 2px solid #71687d;
 }
 
 button.submit:disabled {
-	/* background-color: #BBB6C2;  Pour garder même couleur que quand on a cliqué dessus mais mauvaise idée*/
-	/* border : 2px solid #71687D; */
-	cursor : not-allowed;
+  /* background-color: #BBB6C2;  Pour garder même couleur que quand on a cliqué dessus mais mauvaise idée*/
+  /* border : 2px solid #71687D; */
+  cursor: not-allowed;
 }
 
 .rules {
-	text-align: left;
+  text-align: left;
 }
 
 #attention {
-	font-style: italic;
-	color: red;
+  font-style: italic;
+  color: red;
 }
 
 /*

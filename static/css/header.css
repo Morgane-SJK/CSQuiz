@@ -8,19 +8,21 @@
 }
 
 /* HEADER */
+
 header {
   height: 90px;
+  background-color: #b34165;
 }
 header h1 {
   float: left;
-  margin-top: 2%;
-  color: black;
+  color: white;
+  margin-left: 5%;
 }
 header nav {
   float: right;
-  margin-right: 10%;
+  margin-right: 15%;
   margin-top: 0.5%;
-  color: black;
+  color: white;
 }
 header nav ul li {
   float: right;
@@ -31,4 +33,13 @@ header nav ul li a {
   font-weight: bold;
   margin-right: 20px;
   font-size: 150%;
+  color: white;
+}
+
+header nav ul li a:hoover {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 20px;
+  font-size: 150%;
+  color: blue;
 }

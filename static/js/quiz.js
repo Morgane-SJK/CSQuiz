@@ -9,12 +9,12 @@ function start() {
   //Disable the START button
   document.getElementById("start").disabled = true;
 
-  // TODO : freezer tous les boutons sur les thèmes mais ça marche pas
-  for (const elem of document.getElementsByClassName("subject-buttons")){
-    for(const button of elem.getElementsByTagName("button")){
+  // TODO : laisser en gras le bouton selectionner
+  for (const elem of document.getElementsByClassName("subject-buttons")) {
+    for (const button of elem.getElementsByTagName("button")) {
       button.disabled = true;
-      if(button.innerText == theme){
-        button.className = "selected-button";
+      if (button.innerText == theme) {
+        button.className = "subject-buttons button:selected";
       }
     }
   }
