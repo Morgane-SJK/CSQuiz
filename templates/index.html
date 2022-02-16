@@ -1,50 +1,47 @@
 <!DOCTYPE html>
 <html>
-	
-	<head>
-		<title>QUIZ</title>
-		<meta charset='UTF-8'/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel='stylesheet' href='./static/css/index.css?refresh=0'/>
-	</head>
-  
-	<body>
-  
-		<div id="main">
-  
-		<div>
-			<header>
-				<nav>
-					<ul>
-						<li><a href="index.html">Play</a></li>
-						<li><a href="rules.html">Rules</a></li>
-					</ul>
-				</nav>
-			</header>
-		</div>
-		
-		<h1>Welcome to the</h1>
-	
-		<img src='../static/img/csquiz.png' height='100'/>
-	
-		<h3>Please choose one subject before starting the quiz. <br> If you're a new player, feel free to read the game rules !</h3>
-	
-		<div class="subject-buttons">
-			<button>History</button>
-			<button disabled>Cinema</button>
-			<button disabled>Art</button>
-			<button disabled>Science</button>
-			<button disabled>Sport</button>
-		</div>
-	
-		<br>
-		<button id="start" class="submit" onclick="start()">START</button>
-		<br><br>
-		
-		
-		</div>
-
-	</body>
+  <head>
+    <title>QUIZ</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./static/css/index.css?refresh=0" />
+    <link rel="stylesheet" href="./static/css/header.css?refresh=0" />
     <script src="./static/js/quiz.js"></script>
+    <script src="./static/js/index.js"></script>
+  </head>
 
+  <header> 
+    <div class="wrapper">
+        <h1>General Knowledge Quizz<span class="purple">.</span></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" >Play</a></li>
+                <li><a href="rules.html" >Rules</a></li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+
+  <body>
+      <h1>Welcome to the</h1>
+
+      <img src="../static/img/csquiz.png" height="100" />
+
+      <h3>
+        Please choose one subject before starting the quiz. <br />
+        If you're a new player, feel free to read the game rules !
+      </h3>
+
+      <div class="subject-buttons">
+        <button onclick="changeTheme('Cinema')">Cinema</button>
+        <button onclick="changeTheme('Art')">Art</button>
+        <button onclick="changeTheme('Geography')">Geography</button>
+        <button onclick="changeTheme('History')">History</button>
+        <button onclick="changeTheme('Politics')">Politics</button>
+      </div>
+      <br />
+      <button id="start" class="submit" onclick="start()">START</button>
+      <br /><br />
+    </div>
+  </body>
 </html>
