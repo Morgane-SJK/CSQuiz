@@ -16,13 +16,9 @@ The goal of the project is to create a general knowledge quizz with specific the
 
 ## :runner: Running the code
 
-In the flask-server folder
-
 ```bash
 python quizz.py # To lauch the backend
 ```
-
-Open the index.html page in the frontend folder.
 
 ### Requirements
 
@@ -35,7 +31,7 @@ make install
 ### Structure
 
 ```bash
-├── quesiton_generator
+├── question_generator
 │   ├── classes
 │        ├── init.py
 │        ├── films.py
