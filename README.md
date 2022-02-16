@@ -8,7 +8,7 @@
 
 The goal of the project is to create a general knowledge quizz with specific themes.
 
-**To solve this problem I will implement:**
+**To solve this problem we implemented:**
 
 1. An API
 2. A front-end HTML page
@@ -17,7 +17,7 @@ The goal of the project is to create a general knowledge quizz with specific the
 ## :runner: Running the code
 
 ```bash
-python quizz.py # To lauch the backend
+python quizz.py
 ```
 
 ### Requirements
