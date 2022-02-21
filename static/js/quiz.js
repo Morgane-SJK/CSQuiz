@@ -2,6 +2,7 @@ let question_number = 0;
 let user_score = 0;
 let user_answer = "";
 let theme = "Cinema";
+let language = "English";
 const feedback_true = "The answer is correct !";
 const feedback_false = "The answer is wrong !";
 
@@ -25,7 +26,7 @@ function start() {
 //We display a question with 4 answers
 async function AddQuestion() {
   const questionObject = await fetch(
-    `http://127.0.0.1:5000/newquestion?theme=${theme}`
+    `http://127.0.0.1:5000/newquestion?theme=${theme}&language=${language}`
   ).then((res) => {
     return res.json();
   });
@@ -172,4 +173,8 @@ function shuffleArray(array) {
 
 function changeTheme(wantedTheme) {
   theme = wantedTheme;
+}
+
+function changeLanguage(wantedLanguage) {
+  language = wantedLanguage;
 }

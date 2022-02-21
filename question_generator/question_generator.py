@@ -10,15 +10,16 @@ from question_generator.classes.geography import Geography
 from question_generator.classes.history import History
 from question_generator.classes.politics import Politics
 
+
 class QuestionGenerator():
     def __init__(self):
         self.themes = {'Cinema' : Films(), 'Art' : Art(), 'Geography' : Geography(), 
         'History' : History(), 'Politics' : Politics()}
 
-    def new_question(self, theme):
+    def new_question(self, theme, language):
         theme = self.themes[theme]
         predicate = random.choice(theme.properties)
-        question_data = get_question_data(predicate)
+        question_data = get_question_data(predicate, language)
 
         subjects = list(map(lambda entry: entry["label_subject"]["value"], question_data))
         objects = list(map(lambda entry: entry["label_object"]["value"] if "label_object" in entry else entry["object"]["value"], question_data))
@@ -38,6 +39,6 @@ class QuestionGenerator():
         wrong_answer_list = data_df[same_object_removal_mask & same_subject_removal_mask]["object"]
         chosen_wrong_answers = np.random.choice(wrong_answer_list, 3, replace=False)
 
-        return [{"question": build_question(right_answer_subject, predicate_label, right_answer_range),
+        return [{"question": build_question(right_answer_subject, predicate_label, right_answer_range, language),
                  "right_answer": re.sub("\(.*\)", "", right_answer_object),
                  "wrong_answers": [re.sub("\(.*\)", "", answer) for answer in chosen_wrong_answers]}]
