@@ -2,14 +2,26 @@ let question_number = 0;
 let user_score = 0;
 let user_answer = "";
 let theme = "Cinema";
-const feedback_true = "The answer is correct !";
-const feedback_false = "The answer is wrong !";
+const feedback_true_en = "The answer is correct !";
+const feedback_true_fr = "La réponse est bonne !";
+const feedback_false_en = "The answer is wrong !";
+const feedback_false_fr = "La réponse est fausse !";
+let language = "English";
+
 
 function start() {
   //Disable the START button
   document.getElementById("start").disabled = true;
 
-  // TODO : laisser en gras le bouton selectionner
+  //Check the language
+  let texte = document.getElementById("language").innerHTML;
+  if (texte== "Quiz de culture générale"){
+    language = "French";
+  }
+
+  console.log("language = ", language);
+
+  // TODO : laisser en gras le bouton selectionné
   for (const elem of document.getElementsByClassName("subject-buttons")) {
     for (const button of elem.getElementsByTagName("button")) {
       button.disabled = true;
@@ -72,6 +84,10 @@ async function AddQuestion() {
   let div = document.createElement("div");
   let class_name = "answers" + question_number;
   div.className = class_name;
+  let submit_text = "Submit";
+  if (language=='French'){
+    submit_text = "Soumettre";
+  }
   div.innerHTML =
     "<h3>QUESTION " +
     question_number +
@@ -84,7 +100,7 @@ async function AddQuestion() {
     buttons[3] +
     "<br><button class='submit' id='submit" +
     question_number +
-    "' onclick='AnswerQuestion()'>Submit</button>";
+    "' onclick='AnswerQuestion()'>"+submit_text+"</button>";
   document.getElementById("main").appendChild(div);
 
   //Add an event listener to the buttons to know which one was clicked
@@ -118,28 +134,40 @@ function AnswerQuestion() {
       if (btns[i].id == "right_answer") {
         btns[i].style.backgroundColor = "green";
         if (btns[i].id == user_answer) {
-          feedback = feedback_true;
+          feedback = feedback_true_en;
+          if (language == "French"){
+            feedback = feedback_true_fr;
+          }
           user_score += 1;
         }
       } else {
         if (btns[i].id == user_answer) {
           btns[i].style.backgroundColor = "red";
-          feedback = feedback_false;
+          feedback = feedback_false_en;
+          if (language == "French"){
+            feedback = feedback_false_fr;
+          }
         }
       }
     }
 
     //Display a feedback and Next/End buttons
     let div = document.createElement("div");
+    let next_message = "Next";
+    let end_message = "End";
+    if (language == "French"){
+      next_message = "Suivant";
+      end_message = "Fin";
+    }
     var messagetodisplay =
       "<p>" +
       feedback +
       "</p><button class='submit' id='end" +
       question_number +
-      "' style='background-color:red; margin-left:5px;' onclick='End()'>End</button>" +
+      "' style='background-color:red; margin-left:5px;' onclick='End()'>"+end_message+"</button>" +
       "<button class='submit' id='next" +
       question_number +
-      "' style='background-color:green; margin-left:5px;' onclick='AddQuestion()'>Next</button>";
+      "' style='margin-left:5px;' onclick='AddQuestion()'>"+next_message+"</button>";
     div.innerHTML = messagetodisplay;
     document.getElementById("main").appendChild(div);
     user_answer = "";
@@ -156,8 +184,12 @@ function End() {
 
   //Display a final message with the player's score
   let div = document.createElement("div");
-  div.innerHTML =
-    "<p>Thank you for playing ! Your final score is " +
+  let message_score = "<p>Thank you for playing ! Your final score is ";
+  if (language=='French'){
+    message_score = "<p>Merci d'avoir joué ! Votre score final est ";
+  }
+  console.log("language = ", language)
+  div.innerHTML = message_score +
     user_score +
     "/" +
     question_number +
@@ -173,3 +205,4 @@ function shuffleArray(array) {
 function changeTheme(wantedTheme) {
   theme = wantedTheme;
 }
+
