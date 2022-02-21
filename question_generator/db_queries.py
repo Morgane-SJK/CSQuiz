@@ -47,4 +47,6 @@ def get_resource_type(predicate):
 
 def get_question_data(predicate):
     query_response = _query_resource(predicate)
+    #print(query_response["results"]["bindings"])
     return query_response["results"]["bindings"]
+

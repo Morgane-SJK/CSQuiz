@@ -1,0 +1,45 @@
+.wrapper {
+  width: 940px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.purple {
+  color: #9d2349;
+}
+
+/* HEADER */
+
+header {
+  height: 90px;
+  background-color: #b34165;
+}
+header h1 {
+  float: left;
+  color: white;
+  margin-left: 5%;
+}
+header nav {
+  float: right;
+  margin-right: 15%;
+  margin-top: 0.5%;
+  color: white;
+}
+header nav ul li {
+  float: right;
+  display: inline-block;
+}
+header nav ul li a {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 20px;
+  font-size: 150%;
+  color: white;
+}
+
+header nav ul li a:hoover {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 20px;
+  font-size: 150%;
+  color: blue;
+}

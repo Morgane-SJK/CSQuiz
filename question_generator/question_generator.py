@@ -5,14 +5,18 @@ import re
 from question_generator.db_queries import get_question_data
 from question_generator.question_templates import build_question
 from question_generator.classes.films import Films
-
+from question_generator.classes.art import Art
+from question_generator.classes.geography import Geography
+from question_generator.classes.history import History
+from question_generator.classes.politics import Politics
 
 class QuestionGenerator():
     def __init__(self):
-        self.themes = [Films()]
+        self.themes = {'Cinema' : Films(), 'Art' : Art(), 'Geography' : Geography(), 
+        'History' : History(), 'Politics' : Politics()}
 
-    def new_question(self):
-        theme = random.choice(self.themes)
+    def new_question(self, theme):
+        theme = self.themes[theme]
         predicate = random.choice(theme.properties)
         question_data = get_question_data(predicate)
 

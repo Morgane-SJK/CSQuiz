@@ -41,7 +41,8 @@ def rules():
 
 @app.route('/newquestion')
 def new_question():
-    return jsonify(generator.new_question())
+    theme = request.args.get('theme')
+    return jsonify(generator.new_question(theme))
 
 
 '''_______________________________________MAIN_______________________________________'''
