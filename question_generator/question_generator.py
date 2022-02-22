@@ -19,7 +19,7 @@ class QuestionGenerator():
     def new_question(self, theme_name, language):
         theme = self.themes[theme_name]
         predicate = random.choice(theme.properties)
-        question_data = get_question_data(predicate)
+        question_data = get_question_data(predicate, language)
 
         if len(question_data) == 0:
             return self.new_question(theme_name, language)
@@ -45,7 +45,7 @@ class QuestionGenerator():
         wrong_answer_list = data_df[same_object_removal_mask & same_subject_removal_mask]["object"]
         chosen_wrong_answers = map(parseScientificNotation, np.random.choice(wrong_answer_list, 3, replace=False))
 
-        return [{"question": build_question(right_answer_subject, predicate_label, right_answer_range),
+        return [{"question": build_question(right_answer_subject, predicate_label, right_answer_range, language),
                  "right_answer": re.sub("\(.*\)", "", right_answer_object),
                  "wrong_answers": [re.sub("\(.*\)", "", answer) for answer in chosen_wrong_answers]}]
 

@@ -51,7 +51,7 @@ def get_resource_type(predicate):
     return json.loads(_query(query_string))["results"]["bindings"]
 
 
-def get_question_data(predicate):
-    query_response = _query_resource(predicate)
+def get_question_data(predicate, language):
+    query_response = _query_resource(predicate, language)
     return query_response["results"]["bindings"]
 
