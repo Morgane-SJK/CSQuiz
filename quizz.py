@@ -37,11 +37,21 @@ def play():
 def rules():
     return render_template('rules.html')
 
+@app.route('/index_french.html')
+def play_french():
+    return render_template('index_french.html')
+
+
+@app.route('/rules_french.html')
+def rules_french():
+    return render_template('rules_french.html')
+
 
 @app.route('/newquestion')
 def new_question():
     theme = request.args.get('theme')
-    return jsonify(generator.new_question(theme))
+    language = request.args.get('language')
+    return jsonify(generator.new_question(theme,language))
 
 
 '''_______________________________________MAIN_______________________________________'''
