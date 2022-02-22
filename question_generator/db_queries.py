@@ -14,7 +14,12 @@ def _query(q):
         raise
 
 
-def _query_resource(predicate):
+def _query_resource(predicate, language):
+
+    language_code_mapping = {"English":"EN", "German":"DE", "French":"FR", "Spanish":"ES", "Italian":"IT", "Portuguese":"PT", "Russian":"RU", "Chinese":"ZH"}
+    langage_code = "en"
+    if language in language_code_mapping:
+        langage_code = language_code_mapping[language]
     query_string = f"""PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     SELECT ?label_subject ?object ?label_object ?label_predicate ?range
     WHERE {{
@@ -25,14 +30,15 @@ def _query_resource(predicate):
         {predicate} rdfs:range ?range.
         {predicate} rdfs:label ?label_predicate.
         
-        FILTER langMatches( lang(?label_subject), "EN" )
-        FILTER  (langMatches( lang(?label_object), "EN" ) || !bound(?label_object))
-        FILTER langMatches( lang(?label_predicate), "EN" )
-        FILTER (?wikipagelength> 124488)
+        FILTER langMatches( lang(?label_subject), "{langage_code}" )
+        FILTER  (langMatches( lang(?label_object), "{langage_code}" ) || !bound(?label_object))
+        FILTER langMatches( lang(?label_predicate), "{langage_code}" )
+        FILTER (?wikipagelength> 100000)
     }}
     ORDER BY ?wikipagelength
     LIMIT 200
     """
+
     return json.loads(_query(query_string))
 
 def get_resource_type(predicate):
@@ -47,6 +53,5 @@ def get_resource_type(predicate):
 
 def get_question_data(predicate):
     query_response = _query_resource(predicate)
-    #print(query_response["results"]["bindings"])
     return query_response["results"]["bindings"]
 
