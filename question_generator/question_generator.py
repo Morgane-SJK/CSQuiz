@@ -16,10 +16,13 @@ class QuestionGenerator():
         self.themes = {'Cinema': Films(), 'Art': Art(), 'Geography': Geography(),
                        'History': History(), 'Politics': Politics()}
 
-    def new_question(self, theme):
-        theme = self.themes[theme]
+    def new_question(self, theme_name, language):
+        theme = self.themes[theme_name]
         predicate = random.choice(theme.properties)
         question_data = get_question_data(predicate)
+
+        if len(question_data) == 0:
+            return self.new_question(theme_name, language)
 
         subjects = list(map(lambda entry: entry["label_subject"]["value"], question_data))
         objects = list(
