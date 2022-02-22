@@ -14,7 +14,7 @@ from flask import request
 
 '''_______________________________________APP FLASK_______________________________________'''
 
-app = Flask(__name__, template_folder="templates")
+app = Flask(template_folder="templates")
 
 app.config["SECRET_KEY"] = "alexandremorgane"
 
