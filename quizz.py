@@ -7,14 +7,13 @@ Created on Sat Dec 18 12:11:26 2021
 
 # For the API Flask
 from flask import Flask
-import random
 from flask import render_template, jsonify
 from question_generator.question_generator import QuestionGenerator
 from flask import request
 
 '''_______________________________________APP FLASK_______________________________________'''
 
-app = Flask(template_folder="templates")
+app = Flask(__name__, template_folder="templates")
 
 app.config["SECRET_KEY"] = "alexandremorgane"
 
