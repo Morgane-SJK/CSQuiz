@@ -10,7 +10,7 @@
 /* HEADER */
 
 header {
-  height: 90px;
+  display: flex;
   background-color: #9d2349;
 }
 header h1 {
@@ -23,6 +23,7 @@ header nav {
   margin-right: 5%;
   margin-top: 0.5%;
   color: white;
+  padding-bottom: 10px;
 }
 header nav ul li {
   float: right;
