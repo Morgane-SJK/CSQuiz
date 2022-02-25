@@ -27,6 +27,7 @@ header nav {
 }
 header nav ul li {
   float: right;
+  list-style-type: none;
 }
 header nav ul li a {
   text-transform: uppercase;
