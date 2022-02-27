@@ -14,7 +14,7 @@ def _query(q):
         raise
 
 
-def _query_resource(predicate, language):
+def _query_resource(predicate, language, wiki_page_length):
 
     language_code_mapping = {"English":"EN", "German":"DE", "French":"FR", "Spanish":"ES", "Italian":"IT", "Portuguese":"PT", "Russian":"RU", "Chinese":"ZH"}
     langage_code = "en"
@@ -33,7 +33,7 @@ def _query_resource(predicate, language):
         FILTER langMatches( lang(?label_subject), "{langage_code}" )
         FILTER  (langMatches( lang(?label_object), "{langage_code}" ) || !bound(?label_object))
         FILTER langMatches( lang(?label_predicate), "{langage_code}" )
-        FILTER (?wikipagelength> 100000)
+        FILTER (?wikipagelength> {wiki_page_length})
     }}
     ORDER BY ?wikipagelength
     LIMIT 200
@@ -51,7 +51,7 @@ def get_resource_type(predicate):
     return json.loads(_query(query_string))["results"]["bindings"]
 
 
-def get_question_data(predicate, language):
-    query_response = _query_resource(predicate, language)
+def get_question_data(predicate, language,theme):
+    query_response = _query_resource(predicate, language,theme)
     return query_response["results"]["bindings"]
 
