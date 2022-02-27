@@ -14,6 +14,7 @@ class QuestionGenerator():
     def __init__(self):
         self.themes = {'Cinema': Films(), 'Art': Art(), 'Geography': Geography(),
                        'History': History(), 'Politics': Politics()}
+        self.question_memory = []
 
     def new_question(self, theme_name, language, depth=0):
         if depth == 10:
@@ -59,8 +60,14 @@ class QuestionGenerator():
         chosen_wrong_answers = [item for item in
                                 np.random.choice(wrong_answer_list, 3, replace=False)]
 
-        return [{"question": build_question(right_answer_subject, predicate_label, right_answer_range, language,
+        question_text = build_question(right_answer_subject, predicate_label, right_answer_range, language,
                                             right_answer_range),
+        if question_text in self.question_memory:
+            return self.new_question(theme_name, language, depth)
+
+        self.question_memory.append(question_text)
+
+        return [{"question": question_text,
                  "right_answer": right_answer_object,
                  "wrong_answers": chosen_wrong_answers}]
 
