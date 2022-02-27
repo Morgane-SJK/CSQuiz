@@ -36,89 +36,100 @@ function start() {
 
 //We display a question with 4 answers
 async function AddQuestion() {
-  const questionObject = await fetch(
-    `/newquestion?theme=${theme}&language=${language}`
-  ).then((res) => {
-    return res.json();
-  });
 
-  //Disable Continue and End buttons if there are there
-  continue_button_id = "next" + question_number;
-  let continue_button = document.getElementById(continue_button_id);
-  if (continue_button != null) {
-    continue_button.disabled = true;
-    end_button_id = "end" + question_number;
-    document.getElementById(end_button_id).disabled = true;
+  if (language == "French" && (theme == "History" || theme == "Politics")){
+    let div = document.createElement("div");
+    div.innerHTML =
+      "<h3>Thème indisponible </h3><p>Les thèmes \"Histoire\" et \"Politique\" ne sont pas disponibles en français.</p>"
+      +"<iframe src='https://giphy.com/embed/J3MJAf2FbKO8oaTaTv' width='480' height='480' frameBorder='0' class='giphy-embed' allowFullScreen></iframe>";
+      document.getElementById("main").appendChild(div);
   }
 
-  //Create a new question
-  question_number += 1;
-  const question = questionObject[0]["question"];
-  const right_answer = questionObject[0]["right_answer"];
-  const false_answer1 = questionObject[0]["wrong_answers"][0];
-  const false_answer2 = questionObject[0]["wrong_answers"][1];
-  const false_answer3 = questionObject[0]["wrong_answers"][2];
-
-  //Create a list with the buttons and shuffle it in order to display them in a random order (to not have the right answer at the same place all the time)
-  const button1 =
-    "<button class='answer-buttons' id='right_answer'>" +
-    right_answer +
-    "</button><br>";
-  const button2 =
-    "<button class='answer-buttons' id='false_answer1'>" +
-    false_answer1 +
-    "</button><br>";
-  const button3 =
-    "<button class='answer-buttons' id='false_answer2'>" +
-    false_answer2 +
-    "</button><br>";
-  const button4 =
-    "<button class='answer-buttons' id='false_answer3'>" +
-    false_answer3 +
-    "</button><br>";
-
-  let buttons = [button1, button2, button3, button4];
-  shuffleArray(buttons);
-
-  //Display the question in a div
-  let div = document.createElement("div");
-  let class_name = "answers" + question_number;
-  div.className = class_name;
-  let submit_text = "Submit";
-  if (language=='French'){
-    submit_text = "Soumettre";
-  }
-  div.innerHTML =
-    "<h3>QUESTION " +
-    question_number +
-    "</h3><p>" +
-    question +
-    "</p>" +
-    buttons[0] +
-    buttons[1] +
-    buttons[2] +
-    buttons[3] +
-    "<br><button class='submit' id='submit" +
-    question_number +
-    "' onclick='AnswerQuestion()'>"+submit_text+"</button>";
-  document.getElementById("main").appendChild(div);
-
-  //Add an event listener to the buttons to know which one was clicked
-  //only to the buttons of the actual question
-  let btns_div = document.getElementsByClassName(class_name)[0];
-  let btns = btns_div.getElementsByClassName("answer-buttons");
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", (e) => {
-      user_answer = e.target.id;
+  else{
+    const questionObject = await fetch(
+      `/newquestion?theme=${theme}&language=${language}`
+    ).then((res) => {
+      return res.json();
     });
+  
+    //Disable Continue and End buttons if there are there
+    continue_button_id = "next" + question_number;
+    let continue_button = document.getElementById(continue_button_id);
+    if (continue_button != null) {
+      continue_button.disabled = true;
+      end_button_id = "end" + question_number;
+      document.getElementById(end_button_id).disabled = true;
+    }
+  
+    //Create a new question
+    question_number += 1;
+    const question = questionObject[0]["question"];
+    const right_answer = questionObject[0]["right_answer"];
+    const false_answer1 = questionObject[0]["wrong_answers"][0];
+    const false_answer2 = questionObject[0]["wrong_answers"][1];
+    const false_answer3 = questionObject[0]["wrong_answers"][2];
+  
+    //Create a list with the buttons and shuffle it in order to display them in a random order (to not have the right answer at the same place all the time)
+    const button1 =
+      "<button class='answer-buttons' id='right_answer'>" +
+      right_answer +
+      "</button><br>";
+    const button2 =
+      "<button class='answer-buttons' id='false_answer1'>" +
+      false_answer1 +
+      "</button><br>";
+    const button3 =
+      "<button class='answer-buttons' id='false_answer2'>" +
+      false_answer2 +
+      "</button><br>";
+    const button4 =
+      "<button class='answer-buttons' id='false_answer3'>" +
+      false_answer3 +
+      "</button><br>";
+  
+    let buttons = [button1, button2, button3, button4];
+    shuffleArray(buttons);
+  
+    //Display the question in a div
+    let div = document.createElement("div");
+    let class_name = "answers" + question_number;
+    div.className = class_name;
+    let submit_text = "Submit";
+    if (language=='French'){
+      submit_text = "Soumettre";
+    }
+    div.innerHTML =
+      "<h3>QUESTION " +
+      question_number +
+      "</h3><p>" +
+      question +
+      "</p>" +
+      buttons[0] +
+      buttons[1] +
+      buttons[2] +
+      buttons[3] +
+      "<br><button class='submit' id='submit" +
+      question_number +
+      "' onclick='AnswerQuestion()'>"+submit_text+"</button>";
+    document.getElementById("main").appendChild(div);
+  
+    //Add an event listener to the buttons to know which one was clicked
+    //only to the buttons of the actual question
+    let btns_div = document.getElementsByClassName(class_name)[0];
+    let btns = btns_div.getElementsByClassName("answer-buttons");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", (e) => {
+        user_answer = e.target.id;
+      });
+    }
   }
-
   window.scrollTo(0, document.body.scrollHeight);
 }
 
 function AnswerQuestion() {
   //if the user answered a question
   if (user_answer != "") {
+
     //Disable previous buttons
     submit_button = "submit" + question_number;
     document.getElementById(submit_button).disabled = true;
@@ -188,7 +199,6 @@ function End() {
   if (language=='French'){
     message_score = "<p>Merci d'avoir joué ! Votre score final est ";
   }
-  console.log("language = ", language)
   div.innerHTML = message_score +
     user_score +
     "/" +
