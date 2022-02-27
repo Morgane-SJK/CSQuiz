@@ -15,14 +15,21 @@ class QuestionGenerator():
         self.themes = {'Cinema': Films(), 'Art': Art(), 'Geography': Geography(),
                        'History': History(), 'Politics': Politics()}
 
-    def new_question(self, theme_name, language):
+    def new_question(self, theme_name, language, depth=0):
+        if depth == 10:
+            return [{"question": "Désolé nous manquons de données pour générer une question avec la langue et le theme demandé <br> Sachez que:",
+                     "right_answer": "Vous pouvez changez de thème dans le menu.",
+                     "wrong_answers": ["Vous pouvez changer de langue dans le menu.",
+                                       "L'anglais dispose de plus de thèmes.",
+                                       "L'anglais dispose de plus de type de questions."]}]
+
         theme = self.themes[theme_name]
         predicate, wikipage_length = theme.get_predicate_and_page_length(language)
         question_data = get_question_data(predicate, language, wikipage_length)
         print(predicate)
 
         if len(question_data) == 0:
-            return self.new_question(theme_name, language)
+            return self.new_question(theme_name, language, depth + 1)
 
         subjects = list(map(lambda entry: entry["label_subject"]["value"], question_data))
         objects = list(
@@ -47,7 +54,7 @@ class QuestionGenerator():
         wrong_answer_list = data_df[same_object_removal_mask & same_subject_removal_mask]["object"].unique()
 
         if len(wrong_answer_list) < 3:
-            return self.new_question(theme_name, language)
+            return self.new_question(theme_name, language, depth + 1)
 
         chosen_wrong_answers = [item for item in
                                 np.random.choice(wrong_answer_list, 3, replace=False)]
