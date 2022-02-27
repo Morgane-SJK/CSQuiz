@@ -7,5 +7,5 @@ class Films(Theme):
         self.properties = [
             "dbo:director", "dbo:producer", "dbo:starring", "dbo:budget", "dbo:gross"
         ]
-        self.page_length_multiplier = {"French": 0.7}
+        self.page_length_multiplier = {"French": 0.5}
         self.wiki_page_length = 200000
