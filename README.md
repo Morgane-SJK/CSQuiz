@@ -10,9 +10,8 @@ The goal of the project is to create a general knowledge quizz with specific the
 
 **To solve this problem we implemented:**
 
-1. An API
-2. A front-end HTML page
-3. A flask server
+1. A Web-Server in charge of the data gathering and the question generation
+2. A web-page displaying the questions
 
 ## :runner: Running the code
 
@@ -26,32 +25,39 @@ python quizz.py
 make install
 ```
 
-## :package: Organisation of the project
-
-### Structure
+## :package: Structure of the project
 
 ```bash
 ├── question_generator
 │   ├── classes
-│        ├── init.py
+│        ├── __init__.py
+│        ├── art.py
 │        ├── films.py
-│   ├── init.py
+│        ├── geography.py
+│        ├── history.py
+│        ├── politics.py
+│        ├── theme.py
+│   ├── __init__.py
 │   ├── db_queries.py
+│   ├── french_dictionnary_scrapper.py
 │   ├── question_generator.py
-│   └── question_template.py
+│   └── question_templates.py
 ├── static
 │   ├── css
+│        ├── header.css
 │        ├── index.css
 │   ├── img
 │   └── js
 │        ├── quiz.js
 ├── template
 │   ├── index.html
-│   ├── rules_french.html
-│   └── rules.css
-├── README.md
+│   ├── index_french.html
+│   ├── rules.html
+│   └── rules_french.html
 ├── Makefile
-├── correction.txt
+├── Procfile
 ├── quizz.py
-└──requirements.txt
+├── README.md
+├──requirements.txt
+└──wsgi.py
 ```
