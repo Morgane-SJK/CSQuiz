@@ -9,14 +9,23 @@ class QuestionType(Enum):
 gender_memory = {}
 
 
-def build_question(subject, predicate, object_range, language, subject_range) -> str:
-    persons_range = ["http://dbpedia.org/ontology/Agent", "http://dbpedia.org/ontology/Person",
-                     "http://dbpedia.org/ontology/Actor", "http://dbpedia.org/ontology/Painter",
-                     "http://dbpedia.org/ontology/Athlete", "http://dbpedia.org/ontology/Commander"]
+def build_question(subject, predicate, object_range, language, subject_range, theme) -> str:
+    persons_range = ["http://dbpedia.org/ontology/Agent", "http://dbpedia.org/ontology/Person", 
+                     "http://dbpedia.org/ontology/Painter", "http://dbpedia.org/ontology/Athlete", 
+                     "http://dbpedia.org/ontology/Commander"]
+
+    #change verb if History
+    verb_fr = "est"
+    verb_en = "is"
+    if (theme == "History"):
+        verb_fr = "était"
+        verb_en = "was"
 
     if language == 'French':
         if object_range in persons_range:
-            return f"Qui est {predicate} dans {subject}?"
+            return f"Qui {verb_fr} le {predicate} de {subject}?"
+        elif (object_range == "http://dbpedia.org/ontology/Actor"):
+            return f"Qui {verb_fr} {predicate} dans {subject}?"
         else:
             determinant_pred = determinant_handler_predicate_french(predicate)
             determinant_subj = determinant_handler_subject_french(subject, subject_range)
@@ -25,7 +34,9 @@ def build_question(subject, predicate, object_range, language, subject_range) ->
             return f'{pronoun} est {determinant_pred} {predicate} {determinant_subj} {subject}?'
 
     if object_range in persons_range:
-        return f"Who is {predicate} in {subject}?"
+        return f"Who {verb_en} the {predicate} of {subject}?"
+    elif (object_range == "http://dbpedia.org/ontology/Actor"):
+            return f"Who {verb_en} {predicate} in {subject}?"
     else:
         return f"What is the {predicate.replace('active years','')} of {subject}?"
 
