@@ -1,18 +1,18 @@
 # CSQuiz
 
-## Students
-
-[Alexandre Forestier](https://github.com/alexfrst)
-
-[Morgane Senejko](https://github.com/Morgane-SJK)
-
-[Magali Morin](https://github.com/magalimorin18)
-
 #### Due date
 
 :calendar: **28/02/2022**
 
 #### <span style="color: #fc264d;"> Our project is deployed on [heroku](https://the-cs-quiz.herokuapp.com/) </span>
+
+## Students
+
+- [Alexandre Forestier](https://github.com/alexfrst)
+
+- [Morgane Senejko](https://github.com/Morgane-SJK)
+
+- [Magali Morin](https://github.com/magalimorin18)
 
 ## :books: Subject of the project
 
