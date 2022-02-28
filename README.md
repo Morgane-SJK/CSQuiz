@@ -1,12 +1,23 @@
 # CSQuiz
 
+## Students
+
+[Morgan Senejko](https://github.com/Morgane-SJK)
+
+[Alexandre Forestier](https://github.com/alexfrst)
+
+[Magali Morin](https://github.com/magalimorin18)
+
 #### Due date
 
 :calendar: **28/02/2022**
 
 ## :books: Subject of the project
 
-The goal of the project is to create a general knowledge quizz with specific themes.
+The aim of the project is to create a general knowledge quiz with specific themes. The data needed for
+the quiz is extracted from DBpedia thanks to Sparql queries.
+
+Our project is deployed on [heroku](https://the-cs-quiz.herokuapp.com/)
 
 **To solve this problem we implemented:**
 
