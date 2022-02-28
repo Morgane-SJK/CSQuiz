@@ -1,12 +1,22 @@
 import random
 
 class Theme():
+    """
+    Theme superclass.
+    """
     def __init__(self):
         self.wiki_page_length = 200000
         self.properties = []
         self.page_length_multiplier = {"French": 0.5}
 
     def get_predicate_and_page_length(self, language):
+        """
+        Returns the predicate and the minimal required page length depending on priority rules.
+        :param language: Language of the question.
+        :type language: str
+        :return: (predicate, page_length)
+        :rtype: (str, int)
+        """
         predicate = random.choice(self.properties)
 
         if isinstance(predicate, str):
