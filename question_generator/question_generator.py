@@ -67,8 +67,6 @@ class QuestionGenerator():
 
         self.question_memory.append(question_text)
 
-        print(self.question_memory)
-
         return [{"question": question_text,
                  "right_answer": right_answer_object,
                  "wrong_answers": chosen_wrong_answers}]
