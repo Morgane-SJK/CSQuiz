@@ -3,6 +3,13 @@ from bs4 import BeautifulSoup
 
 
 def get_word_gender(word):
+    """
+    Scraps the gender a french word.
+    :param word: Word to be checked.
+    :type word: str
+    :return: Word gender M|F.
+    :rtype: str
+    """
     response = requests.get(f"https://www.larousse.fr/dictionnaires/francais/{word}")
     soup = BeautifulSoup(response.content, 'html.parser')  # the parser that suits to the html
     wanted_words = soup.find_all("a", string=word)

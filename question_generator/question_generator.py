@@ -11,12 +11,29 @@ from question_generator.classes.politics import Politics
 
 
 class QuestionGenerator():
+    """
+    QuestionGenerator class is used to generate questions from the DBpedia database.
+    """
     def __init__(self):
+        """
+        QuestionGenerator constructor.
+        """
         self.themes = {'Cinema': Films(), 'Art': Art(), 'Geography': Geography(),
                        'History': History(), 'Politics': Politics()}
         self.question_memory = []
 
     def new_question(self, theme_name, language, depth=0):
+        """
+        Generates a new question and its answer for a given theme_name and language.
+        :param theme_name: Theme of of the question.
+        :type theme_name: str
+        :param language: Language of the question.
+        :type language: str
+        :param depth: Number of attempts made to generate this question.
+        :type depth: int
+        :return: Question content.
+        :rtype: dict
+        """
         if depth == 14:
             return [{"question": "Désolé nous manquons de données pour générer une question avec la langue et le theme demandé <br> Sachez que:",
                      "right_answer": "Vous pouvez changez de thème dans le menu.",
@@ -73,6 +90,13 @@ class QuestionGenerator():
 
 
 def text_treatment(string):
+    """
+    Threats a string to be suitable for a question.
+    :param string: String to be treated.
+    :type string: str
+    :return: Treated string.
+    :rtype: str
+    """
     if re.match("\\w\\.\\w+E\\w+", string):
         return f"{float(string):_.0f}".replace('_', ' ')
     string_without_attributes = re.sub("\(.*\)", "", string)
