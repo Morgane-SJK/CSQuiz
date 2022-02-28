@@ -61,11 +61,13 @@ class QuestionGenerator():
                                 np.random.choice(wrong_answer_list, 3, replace=False)]
 
         question_text = build_question(right_answer_subject, predicate_label, right_answer_range, language,
-                                            right_answer_range, theme_name),
+                                            right_answer_range, theme_name)
         if question_text in self.question_memory:
             return self.new_question(theme_name, language, depth)
 
         self.question_memory.append(question_text)
+
+        print(self.question_memory)
 
         return [{"question": question_text,
                  "right_answer": right_answer_object,
