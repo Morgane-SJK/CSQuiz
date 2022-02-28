@@ -9,9 +9,7 @@
 ## Students
 
 - [Alexandre Forestier](https://github.com/alexfrst)
-
 - [Morgane Senejko](https://github.com/Morgane-SJK)
-
 - [Magali Morin](https://github.com/magalimorin18)
 
 ## :books: Subject of the project
