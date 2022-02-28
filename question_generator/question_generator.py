@@ -17,7 +17,7 @@ class QuestionGenerator():
         self.question_memory = []
 
     def new_question(self, theme_name, language, depth=0):
-        if depth == 10:
+        if depth == 14:
             return [{"question": "Désolé nous manquons de données pour générer une question avec la langue et le theme demandé <br> Sachez que:",
                      "right_answer": "Vous pouvez changez de thème dans le menu.",
                      "wrong_answers": ["Vous pouvez changer de langue dans le menu.",
