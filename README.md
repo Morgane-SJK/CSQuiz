@@ -12,12 +12,13 @@
 
 :calendar: **28/02/2022**
 
+#### <span style="color: #fc264d;"> Our project is deployed on [heroku](https://the-cs-quiz.herokuapp.com/) </span>
+
 ## :books: Subject of the project
 
 The aim of the project is to create a general knowledge quiz with specific themes. The data needed for
 the quiz is extracted from DBpedia thanks to Sparql queries.
 
-Our project is deployed on [heroku](https://the-cs-quiz.herokuapp.com/)
 
 **To solve this problem we implemented:**
 
