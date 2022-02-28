@@ -31,6 +31,8 @@ def build_question(subject, predicate, object_range, language, subject_range, th
                      "http://dbpedia.org/ontology/Painter", "http://dbpedia.org/ontology/Athlete", 
                      "http://dbpedia.org/ontology/Commander"]
 
+    vowels = "aeiou"
+
     #change verb if History
     verb_fr = "est"
     verb_en = "is"
@@ -39,8 +41,10 @@ def build_question(subject, predicate, object_range, language, subject_range, th
         verb_en = "was"
 
     if language == 'French':
+        l_app = "l'"
+        d_app = "d'"
         if object_range in persons_range:
-            return f"Qui {verb_fr} le {predicate} de {subject}?"
+            return f"Qui {verb_fr} {l_app if predicate[0] in vowels else 'le '}{predicate}  {d_app if subject[0] in vowels else 'de '}{subject}?"
         elif (object_range == "http://dbpedia.org/ontology/Actor"):
             return f"Qui {verb_fr} {predicate} dans {subject}?"
         else:
@@ -48,7 +52,7 @@ def build_question(subject, predicate, object_range, language, subject_range, th
             determinant_subj = determinant_handler_subject_french(subject, subject_range)
             pronoun = pronoun_handler_french(predicate)
 
-            return f'{pronoun} est {determinant_pred} {predicate} {determinant_subj} {subject}?'
+            return f'{pronoun} est {determinant_pred} {predicate} {determinant_subj}{subject}?'
 
     if object_range in persons_range:
         return f"Who {verb_en} the {predicate} of {subject}?"
@@ -111,16 +115,16 @@ def determinant_handler_subject_french(subject, subject_range):
     first_word = subject.split(" ")[0].lower()
 
     if first_word[-1] == "s":
-        return "des"
+        return "des "
 
     print(subject_range)
     if subject_range in ["http://dbpedia.org/ontology/Work"]:
-        return "de"
+        return "de "
 
     if first_word not in gender_memory:
         gender_memory[first_word] = get_word_gender(first_word)
 
     if gender_memory[first_word] == "F":
-        return "de la"
+        return "de la "
 
-    return "du"
+    return "du "

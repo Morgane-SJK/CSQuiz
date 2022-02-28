@@ -34,7 +34,7 @@ class QuestionGenerator():
         :return: Question content.
         :rtype: dict
         """
-        if depth == 10:
+        if depth == 14:
             return [{"question": "Désolé nous manquons de données pour générer une question avec la langue et le theme demandé <br> Sachez que:",
                      "right_answer": "Vous pouvez changez de thème dans le menu.",
                      "wrong_answers": ["Vous pouvez changer de langue dans le menu.",
@@ -78,7 +78,7 @@ class QuestionGenerator():
                                 np.random.choice(wrong_answer_list, 3, replace=False)]
 
         question_text = build_question(right_answer_subject, predicate_label, right_answer_range, language,
-                                            right_answer_range, theme_name),
+                                            right_answer_range, theme_name)
         if question_text in self.question_memory:
             return self.new_question(theme_name, language, depth)
 

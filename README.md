@@ -1,18 +1,28 @@
 # CSQuiz
 
+## Students
+
+[Morgan Senejko](https://github.com/Morgane-SJK)
+
+[Alexandre Forestier](https://github.com/alexfrst)
+
+[Magali Morin](https://github.com/magalimorin18)
+
 #### Due date
 
 :calendar: **28/02/2022**
 
 ## :books: Subject of the project
 
-The goal of the project is to create a general knowledge quizz with specific themes.
+The aim of the project is to create a general knowledge quiz with specific themes. The data needed for
+the quiz is extracted from DBpedia thanks to Sparql queries.
+
+Our project is deployed on [heroku](https://the-cs-quiz.herokuapp.com/)
 
 **To solve this problem we implemented:**
 
-1. An API
-2. A front-end HTML page
-3. A flask server
+1. A Web-Server in charge of the data gathering and the question generation
+2. A web-page displaying the questions
 
 ## :runner: Running the code
 
@@ -26,32 +36,39 @@ python quizz.py
 make install
 ```
 
-## :package: Organisation of the project
-
-### Structure
+## :package: Structure of the project
 
 ```bash
 ├── question_generator
 │   ├── classes
-│        ├── init.py
+│        ├── __init__.py
+│        ├── art.py
 │        ├── films.py
-│   ├── init.py
+│        ├── geography.py
+│        ├── history.py
+│        ├── politics.py
+│        ├── theme.py
+│   ├── __init__.py
 │   ├── db_queries.py
+│   ├── french_dictionnary_scrapper.py
 │   ├── question_generator.py
-│   └── question_template.py
+│   └── question_templates.py
 ├── static
 │   ├── css
+│        ├── header.css
 │        ├── index.css
 │   ├── img
 │   └── js
 │        ├── quiz.js
 ├── template
 │   ├── index.html
-│   ├── rules_french.html
-│   └── rules.css
-├── README.md
+│   ├── index_french.html
+│   ├── rules.html
+│   └── rules_french.html
 ├── Makefile
-├── correction.txt
+├── Procfile
 ├── quizz.py
-└──requirements.txt
+├── README.md
+├──requirements.txt
+└──wsgi.py
 ```
