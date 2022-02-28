@@ -2,9 +2,9 @@
 
 ## Students
 
-[Morgan Senejko](https://github.com/Morgane-SJK)
-
 [Alexandre Forestier](https://github.com/alexfrst)
+
+[Morgane Senejko](https://github.com/Morgane-SJK)
 
 [Magali Morin](https://github.com/magalimorin18)
 
