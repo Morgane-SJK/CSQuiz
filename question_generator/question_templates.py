@@ -10,6 +10,23 @@ gender_memory = {}
 
 
 def build_question(subject, predicate, object_range, language, subject_range, theme) -> str:
+    """
+    Builds the question text with a correct syntax and a correct grammar for a given question.
+    :param subject: Subject of the question.
+    :type subject: str
+    :param predicate: Predicate of the question
+    :type predicate: str
+    :param object_range: Range of the object.
+    :type object_range: str
+    :param language: Language of the question.
+    :type language: str
+    :param subject_range: Range of the subject.
+    :type subject_range: str
+    :param theme: Theme name of the question.
+    :type theme: str
+    :return: Question text
+    :rtype: str
+    """
     persons_range = ["http://dbpedia.org/ontology/Agent", "http://dbpedia.org/ontology/Person", 
                      "http://dbpedia.org/ontology/Painter", "http://dbpedia.org/ontology/Athlete", 
                      "http://dbpedia.org/ontology/Commander"]
@@ -45,6 +62,13 @@ def build_question(subject, predicate, object_range, language, subject_range, th
         return f"What is the {predicate.replace('active years','')} of {subject}?"
 
 def pronoun_handler_french(predicate):
+    """
+    Generates the correct pronoun for a french sentence.
+    :param predicate: Predicate of the question.
+    :type predicate: str
+    :return: Proper pronoun (Quel|Quelle).
+    :rtype: str
+    """
     if predicate not in gender_memory:
         gender_memory[predicate] = get_word_gender(predicate.lower())
 
@@ -53,6 +77,13 @@ def pronoun_handler_french(predicate):
     return "Quel"
 
 def determinant_handler_predicate_french(predicate):
+    """
+    Generates the correct specifier for a french predicate.
+    :param predicate: Predicate of the question.
+    :type predicate: str
+    :return: Proper specifier (le|la|les|l').
+    :rtype: str
+    """
     vowels = "aeiou"
 
     if predicate[0] in vowels:
@@ -68,6 +99,15 @@ def determinant_handler_predicate_french(predicate):
 
 
 def determinant_handler_subject_french(subject, subject_range):
+    """
+    Generates the proper specifier for a French subject.
+    :param subject: Subject of the question.
+    :type subject: str
+    :param subject_range: Subject range.
+    :type subject_range: str
+    :return: Subject specifier (du|de|des|d'|de la ).
+    :rtype: str
+    """
     vowels = "aeiou"
     if subject[0].lower() in vowels:
         return "d'"
